@@ -93,19 +93,7 @@ export default class SortingVisualizer extends React.Component {
 
     return (
       <Row className='justify-content-center align-items-center'>
-        <Col>
-          {array.map((value, idx) => (
-            <div
-              className="array-bar"
-              key={idx}
-              style={{
-                backgroundColor: PRIMARY_COLOR,
-                height: `${value}px`,
-              }}></div>
-          ))}
-        </Col>
-
-        <ButtonToolbar className='justify-content-center'>
+        <ButtonToolbar className='justify-content-center mt-2'>
           <ButtonGroup className="me-2" aria-label="First group">
             <Button onClick={() => this.resetArray()}>Generate New Array</Button>
           </ButtonGroup>
@@ -119,6 +107,18 @@ export default class SortingVisualizer extends React.Component {
             <Button onClick={() => this.testSortingAlgorithms()}>Test Sorting Algorithms (BROKEN)</Button>
           </ButtonGroup>
         </ButtonToolbar>
+
+        <Col className='mt-2'>
+          {array.map((value, idx) => (
+            <div
+              className="array-bar"
+              key={idx}
+              style={{
+                backgroundColor: PRIMARY_COLOR,
+                height: `${value}px`,
+              }}></div>
+          ))}
+        </Col>
       </Row>
 
     );
