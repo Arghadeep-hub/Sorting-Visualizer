@@ -1,12 +1,14 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
+    <Container fluid className='mt-4 mb-2'>
       <SortingVisualizer />
-    </div>
+    </Container>
   );
 }
 

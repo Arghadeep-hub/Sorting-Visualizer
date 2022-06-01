@@ -1,5 +1,6 @@
 import React from 'react';
-import {getMergeSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js';
+import { Button, ButtonGroup, ButtonToolbar, Col, Row } from 'react-bootstrap';
+import { getMergeSortAnimations } from '../sortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
@@ -32,7 +33,7 @@ export default class SortingVisualizer extends React.Component {
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(5, 730));
     }
-    this.setState({array});
+    this.setState({ array });
   }
 
   mergeSort() {
@@ -88,28 +89,38 @@ export default class SortingVisualizer extends React.Component {
   }
 
   render() {
-    const {array} = this.state;
+    const { array } = this.state;
 
     return (
-      <div className="array-container">
-        {array.map((value, idx) => (
-          <div
-            className="array-bar"
-            key={idx}
-            style={{
-              backgroundColor: PRIMARY_COLOR,
-              height: `${value}px`,
-            }}></div>
-        ))}
-        <button onClick={() => this.resetArray()}>Generate New Array</button>
-        <button onClick={() => this.mergeSort()}>Merge Sort</button>
-        <button onClick={() => this.quickSort()}>Quick Sort</button>
-        <button onClick={() => this.heapSort()}>Heap Sort</button>
-        <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-        <button onClick={() => this.testSortingAlgorithms()}>
-          Test Sorting Algorithms (BROKEN)
-        </button>
-      </div>
+      <Row className='justify-content-center align-items-center'>
+        <Col>
+          {array.map((value, idx) => (
+            <div
+              className="array-bar"
+              key={idx}
+              style={{
+                backgroundColor: PRIMARY_COLOR,
+                height: `${value}px`,
+              }}></div>
+          ))}
+        </Col>
+
+        <ButtonToolbar className='justify-content-center'>
+          <ButtonGroup className="me-2" aria-label="First group">
+            <Button onClick={() => this.resetArray()}>Generate New Array</Button>
+          </ButtonGroup>
+          <ButtonGroup className="me-2" aria-label="Second group">
+            <Button onClick={() => this.mergeSort()}>Merge Sort</Button>
+            <Button onClick={() => this.quickSort()}>Quick Sort</Button>
+            <Button onClick={() => this.bubbleSort()}>Bubble Sort</Button>
+            <Button onClick={() => this.heapSort()}>Heap Sort</Button>
+          </ButtonGroup>
+          <ButtonGroup className="me-2" aria-label="Third group">
+            <Button onClick={() => this.testSortingAlgorithms()}>Test Sorting Algorithms (BROKEN)</Button>
+          </ButtonGroup>
+        </ButtonToolbar>
+      </Row>
+
     );
   }
 }
